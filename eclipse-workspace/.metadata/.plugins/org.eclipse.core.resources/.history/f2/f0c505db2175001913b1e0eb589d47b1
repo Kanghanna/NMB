@@ -1,0 +1,14 @@
+package com.example.spring_lec6;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class CookieTestController {
+
+	@GetMapping("/add_cookie_data_page")
+	public String addCookieDataPage() {   
+		return "add_cookie_data_page"; 
+	}
+}
+

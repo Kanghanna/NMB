@@ -1,0 +1,6 @@
+package com.example.spring_lec6;
+
+@Controller
+public class CookieTestController {
+
+}
