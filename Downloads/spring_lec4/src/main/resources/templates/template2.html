@@ -1,0 +1,19 @@
+<!-- 단순 변수 접근 -->
+<!-- th:text  단순 변수 접근 및 내용 출력 -->
+<h1 th:text="${value1}"></h1>
+​
+<!-- 만약 th:text에서 필요로 하는 값이 제공되지 않으면 기존의  Hello World! 값이 출력됨 -->
+<p th:text="${value2}">Hello World!</p>
+<!-- ${} 블록 내부에 자바 표현식 삽입 가능 (비권장) -->
+<p th:text="${value2.replace('Hello', 'Jello')}">Hello World!</p>
+ 
+ <!-- 객체 접근 -->
+<span th:text="${mybook.name}"></span><br /> <!-- 실제로는 mybook.getName() 호출 -->
+<!-- bracket 써서도 접근 가능 (완전 java문법이라고 볼 수 없음)-->
+<span th:text="${mybook['name']}"></span><br />
+<!-- + 연산자 이용하여 뒤에 "원" 붙이기 -->
+<span th:text="${mybook.price} + '원'"></span><br /> <!-- mybook.getPrice() -->
+<span th:text="'할인가: ' + ${mybook.price*2} + ' 원'"></span><br />
+<!-- ||를 내부에 텍스트 삽입 가능 (권장) -->
+<span th:text="|할인가: ${mybook.price*2} 원|"></span><br />
+<span th:text="${mybook.author.name}"></span><br /> <!-- mybook.getAuthor().getName() -->

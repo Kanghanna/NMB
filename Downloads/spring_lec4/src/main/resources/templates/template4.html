@@ -1,0 +1,36 @@
+<!-- 실제로는 #ctx(context)에서 변수를 관리 -->
+<p th:text="${#ctx.getVariable('value')}"></p>
+<!-- 모든 변수를 관리하는 #vars 접근 -->
+<p th:text="${#vars.value}"></p>
+​
+<!-- #locale -->
+<p th:text="${#locale}"></p>
+​
+<p>--------------------</p>
+​
+<!-- #request -->
+<!-- 
+    HttpServletRequest에 직접 접근
+    https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html 
+-->
+<p th:text="${#request}"></p>
+<p th:text="${#request.getHeader('Host')}"></p>
+<p th:text="${#request.getParameter('param1')}"></p>
+<p th:text="${#request.getQueryString()}"></p>
+​
+<p>--------------------</p>
+​
+<!-- #session -->
+<!--
+    HttpSession에 직접 접근
+    https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpSession.html
+-->
+<p th:text="${#session.getAttribute('session_value1')}"></p>
+<p th:text="${#session.getAttribute('session_value2')}"></p>
+<p th:text="${#session.getId()}"></p>
+​
+<!-- #response -->
+<!--
+    HttpServletResponse에 직접 접근
+    https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html 
+-->

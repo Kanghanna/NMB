@@ -1,0 +1,56 @@
+<meta charset = "utf-8" />
+<!-- th:if, th:unless -->
+<!-- 참, 거짓 여부에 따라서 해당 요소를 보여줄지 말지(display: none;을 한다는 것이 아니고 아예 문 서에 포함 자체를 안함) 결정 --> 
+<div th:if="${condition1} == true" style="width:200px; height:200px; background: red;">true</div>
+
+<div th:object="${book}">
+    <h1 th:text="*{name}"></h1>
+    <!-- if -->
+    <div th:if="*{sale} == true">
+        <p>현재 할인 판매중인 상품입니다. 할인률은 <span th:text="*{saleAmount * 100}"></span>%이고 가격은 <span th:text="*{price - (price * saleAmount)}"></span>입니다.</p>
+    </div>
+    <!-- else -->
+    <!-- true와의 비교는 불필요 -->
+    <div th:unless="*{sale}">
+        <p>현재 정가 판매중인 상품입니다. 가격은 <span th:text="*{price}"></span>입니다.</p>
+    </div>
+</div>
+
+<!-- 스타일 정보 -->
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.sale {
+    color: red;
+}
+.odd {
+    background: lightgray;
+}
+.first, .last {
+    background: lightblue;
+}
+</style>
+​
+
+<!-- th:each -->
+<table>
+    <tr>
+        <th>이름</th>
+        <th>저자</th>
+        <th>정가</th>
+        <th>할인가</th>
+    </tr>
+    <p>총 <span th:text="${book_list.size()}"></span>권의 책이 있습니다.</p>
+    <!-- book_list의 개별 객체들을 book이라는 이름으로 받기 -->
+    <!-- for(Book book : book_list) { } -->
+    <tr th:each="book : ${book_list}">
+        <td th:text="${book.name}"></td>
+        <td th:text="${book.author.name}"></td>
+        <td th:text="${book.price}"></td>
+        <!-- isSale() 메소드 호출로 세일 여부 판단도 가능 -->
+        <td th:if="${book.isSale()}" class="sale" th:text="${book.price - (book.price * book.saleAmount)}"></td>
+        <td th:unless="${book.isSale()}">N/A</td>
+    </tr>
+</table>

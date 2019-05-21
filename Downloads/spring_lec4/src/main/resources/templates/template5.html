@@ -1,0 +1,17 @@
+<!-- #calendars -->
+<p th:text="${today}"></p>
+<p th:text="${#calendars.format(today, 'dd/MMM/yyyy HH:mm')}"></p>
+<p th:text="${#calendars.year(today)}"></p>
+<p th:text="${#calendars.month(today)}"></p>
+<p th:text="${#calendars.day(today)}"></p>
+
+<p>--------------------</p>
+
+<!-- #numbers -->
+<p th:text="${#numbers.formatDecimal(inum, 3,'COMMA', 0,'COMMA')}"></p>
+<p th:text="${#numbers.formatDecimal(dnum, 1, 3)}"></p>
+<!-- 특정 자릿수에 맞춰야 하는 경우(앞, 뒤에 0 붙이기) -->
+<p th:text="${#numbers.formatDecimal(dnum, 10, 10)}"></p>
+<p th:text="${#numbers.formatDecimal(dnum, 3,'COMMA', 2,'POINT')}"></p>
+
+<p>--------------------</p>
